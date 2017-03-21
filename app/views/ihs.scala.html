@@ -1,0 +1,98 @@
+@(applicationData: model.ApplicationData, signedToken: String)
+
+<html>
+    <body>
+        <h1>IHS Stub</h1>
+
+        <form method="post" action="@components.Configuration.dcjSuccessfulUrl" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="ihs_token" value="@{signedToken}" />
+            <input style="height: 78px; width: 250px; font-size: 15px;" id="submitToDcj" type="submit" value="Send Reference To DCJ"/>
+        </form>
+
+        <form method="get" action="@{components.Configuration.dcjFailureUrl}">
+            <input type="hidden" name="Error_Code" value="IF101-201" />
+            <input type="hidden" name="Error_Description" value="some description" />
+            <input style="height: 78px; width: 250px; font-size: 15px;" id="errorToDcj" type="submit" value="Send error To DCJ"/>
+        </form>
+
+        <h2>Data Received from DCJ</h2>
+
+        <div id="col1" style="display: inline-block; width:50%;">
+            <h3>Application Data</h3>
+            <table cellpadding="5">
+                <tr>
+                    <td>Visa Application Number</td>
+                    <td>
+                        @applicationData.VisaApplicationNumber
+                    </td>
+                </tr>
+                <tr>
+                    <td>InCountry</td>
+                    <td>
+                        @applicationData.InCountry
+                    </td>
+                </tr>
+                <tr>
+                    <td>VAC</td>
+                    <td>
+                        @applicationData.VAC.getOrElse("")
+                    </td>
+                </tr>
+                <tr>
+                    <td>EmailAddress</td>
+                    <td>
+                        @applicationData.EmailAddress.getOrElse("")
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="col2" style="display: inline-block; width:40%;">
+            <h3>Lead Applicant</h3>
+            <table cellpadding="5">
+                <tr>
+                    <td>Title</td>
+                    <td>
+                        @applicationData.LeadApplicant.Title.getOrElse("")
+                    </td>
+                </tr>
+                <tr>
+                    <td>GivenNames</td>
+                    <td>
+                        @applicationData.LeadApplicant.GivenNames.getOrElse("")
+                    </td>
+                </tr>
+                <tr>
+                    <td>FamilyName</td>
+                    <td>
+                        @applicationData.LeadApplicant.FamilyName.getOrElse("")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nationality</td>
+                    <td>
+                        @applicationData.LeadApplicant.Nationality.getOrElse("")
+                    </td>
+                </tr>
+                <tr>
+                    <td>VisaType</td>
+                    <td>
+                        @applicationData.LeadApplicant.VisaType.getOrElse("")
+                    </td>
+                </tr>
+                <tr>
+                    <td>PassportNumber</td>
+                    <td>
+                        @applicationData.LeadApplicant.PassportNumber.getOrElse("")
+                    </td>
+                </tr>
+                <tr>
+                    <td>DateOfBirth</td>
+                    <td>
+                        @applicationData.LeadApplicant.DateOfBirth.getOrElse("")
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </body>
+</html>
