@@ -1,4 +1,4 @@
-# IHS Stub 
+# IHS Stub [![Build Status](https://travis-ci.org/UKHomeOffice/ihs-stub.svg?branch=master)](https://travis-ci.org/UKHomeOffice/ihs-stub)
 
 ## Synopsis
 
